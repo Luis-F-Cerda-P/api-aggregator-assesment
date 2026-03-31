@@ -1,4 +1,4 @@
-# api-aggregator-assesment
+# api-aggregator-assessment
 Focused Rails API endpoint that aggregates data from two external sources, applies specific business logic, persists the result to a database and returns a structured JSON response.
 
 *This README file was inspired by [this sample](https://raw.githubusercontent.com/learnenough/rails_tutorial_sample_app_7th_ed/refs/heads/main/README.md)*
@@ -15,8 +15,8 @@ The setup steps expect following tools to be installed on the system.
 To get started with the app, clone the repo and then install the needed gems. You can clone the repo as follows:
 
 ```
-$ git clone https://github.com/Luis-F-Cerda-P/api-aggregator-assesment.git
-$ cd api-aggregator-assesment
+$ git clone https://github.com/Luis-F-Cerda-P/api-aggregator-assessment.git
+$ cd api-aggregator-assessment
 ```
 
 To install the gems, you will need the same versions of Ruby (ruby-3.4.8) and Bundler (2.6.9) used to build the app. You can verify the versions by using the `cat` and `tail` commands as follows:
