@@ -27,7 +27,13 @@ module DummyJson
         request = Net::HTTP::Get.new(url)
         response = https.request(request)
 
-        JSON.parse(response.body)
+        unless response.is_a?(Net::HTTPSuccess)
+          error_message = "DummyJson API Error: #{response.code}"
+          Rails.logger.error("#{error_message} #{response.body}")
+          raise DummyJsonApiError.new(error_message, response.code.to_i, response.body)
+        end
+
+        JSON.parse(response.body,  { symbolize_names: true })
       end
     end
   end
