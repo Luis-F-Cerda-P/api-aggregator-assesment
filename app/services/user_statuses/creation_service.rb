@@ -18,12 +18,12 @@ module UserStatuses
       )
 
     rescue StandardError => e
-      Rails.logger.error("Data fetching failed: #{e.message}")
+      Rails.logger.error("Record creation failed: #{e.message}")
 
       ServiceResult.new(
         success: false,
         data: nil,
-        errors: [ "Data fetching failed. Please try again." ]
+        errors: [ "Record creation failed. Please try again." ]
       )
     end
 
@@ -41,6 +41,7 @@ module UserStatuses
       end
 
       def extract_user_params
+        id = @data[:user][:id]
         full_name = "#{@data[:user][:firstName]} #{@data[:user][:lastName]}"
         experience = @data[:user][:age] > 50 ? "Veteran" : "Rookie"
 
@@ -49,6 +50,7 @@ module UserStatuses
         next_urgent_task = pending_task_count > 0 ? pending_tasks.first[:todo] : nil
 
         user_status_params = {
+          id: id,
           full_name: full_name,
           experience: experience,
           pending_task_count: pending_task_count,
